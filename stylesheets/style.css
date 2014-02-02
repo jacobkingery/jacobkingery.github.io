@@ -1,0 +1,196 @@
+@font-face {
+	font-family: "RaphaelIcons";
+	src: url("../fonts/raphaelicons-webfont.eot");
+	src: local("☺"), url("../fonts/raphaelicons-webfont.woff") format("woff"), 
+		url("../fonts/fontsraphaelicons-webfont.ttf") format("truetype"), 
+		url("../fonts/fontsraphaelicons-webfont.svg") format("svg");
+}
+
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background-color: #222;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: "Ubuntu", sans-serif;
+	text-align: center;
+	color: #FFF;
+}
+
+.navbar {
+	background-color: #333;
+	overflow: hidden;
+}
+
+.navbar .left {
+	list-style-type: none;
+	margin: 0;
+	float: left;
+}
+
+.navbar .left li {
+	background-color: #333;
+	font-size: 24px;
+	display: inline-block;
+	padding: 4px 20px;
+}
+
+.navbar .left li.current {
+	background-color: #922;
+}
+
+.navbar .left li.current a {
+	color: #FFF;
+}
+
+.navbar .right {
+	list-style-type: none;
+	margin: 0;
+	float: right;
+}
+
+.navbar .right li {
+	background-color: #333;
+	display: inline-block;
+	padding: 4px 10px 0px 10px;
+	width: 30px;
+}
+
+.navbar .icon {
+	font-family: "RaphaelIcons";
+	font-size: 32px;
+}
+
+.navbar a {
+	text-decoration: none;
+	color: #AAA;
+}
+
+.navbar a:hover {
+	color: #FFF;
+}
+
+.titleBlock {
+	padding: 50px 0 30px 0;
+}
+
+.title {
+	font-size: 50px;
+	padding: 10px;
+}
+
+.subtitle {
+	font-size: 25px;
+	font-style: italic;
+}
+
+h1 {
+	font-size: 50px;
+	font-weight: 400;
+	padding: 10px;
+	margin: 0;
+}
+
+h2 {
+	font-size: 35px;
+	font-weight: 400;
+	padding: 0;
+	margin-top: 30px;
+	text-align: center;
+}
+
+h3 {
+	font-size: 25px;
+	font-weight: 300;
+	font-style: italic;
+	padding: 0;
+	margin: 0;
+}
+
+.terminal {
+	background-color: #000;
+	border: solid #555 8px;
+	border-radius: 25px;
+	height: 300px;
+	width: 600px;
+	margin: auto;
+	padding: 20px;
+	text-align: left;
+}
+
+.terminalLine {
+	height: 28px;
+}
+
+.terminalLine pre {
+	margin-top: 3px;
+}
+
+.terminalInput {
+	height: 28px;
+}
+
+.terminalText {
+	font-family: "Ubuntu Mono", "Ubuntu", sans-serif;
+	font-size: 16px;
+}
+
+.field {
+	background-color: #000;
+	border: none;
+	outline: none;
+	width: 580px;
+	font-family: "Ubuntu Mono", "Ubuntu", sans-serif;
+	font-size: 16px;
+	color: #FFF
+}
+
+.centerColumn {
+	background-color: #666;
+	width: 800px;
+	margin: auto;
+	overflow: hidden;
+}
+
+.centerColumn a {
+	text-decoration: underline;
+	color: #FFF;
+}
+
+.about {
+	font-size: 20px;
+}
+
+.about .me {
+	margin-top: -10px;
+	width: 300px;
+}
+
+.about p {
+	text-align: left;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	padding: 0 20px;
+}
+
+.about p img {
+	float: left;
+	padding: 10px 10px 10px 0px;	
+}
+
+.about .puzzles, .music {
+	width: 45px;
+}
+
+.about .olin {
+	width: 115px;
+}
+
+.projects img {
+	width: 600px;
+}
