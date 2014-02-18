@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 	var makeLine = function(text) {
-		// Print out text given, wraps at spaces if needed
+		// Print out text given, wrap at spaces if needed
 		if (text.length > maxChars + 2) {
 			var i = maxChars + 2;
 			var subText = text.slice(0, i);
@@ -53,56 +53,83 @@ $(document).ready(function() {
 		makeLine(skillText);
 	};
 
+	var fillField = function() {
+		// Fill input field with appropriate command from history
+		$(".field").focus();
+		$(".field").val("");
+		if (historyCounter && historyCounter < commandHistory.length) {
+			$(".field").val(commandHistory[historyCounter]);
+		}
+	}
+
 	var initialText = "What would you like to do? (type 'help' for options)";
 	var undefText = "That command is undefined; try something else. (type 'help' for options)";
-	var maxLines = 9;
-	var maxChars = 72;
+	var maxLines = 9;  // Maximum lines that fit in terminal
+	var maxChars = 72;  // Maximum characters that fit per line
 
-	// Initialize terminal contents
+	// Initialize terminal contents and command history
 	makeLine(initialText);
 	makeInput();
+	var commandHistory = [""];
+	var historyCounter = commandHistory.length;
+
 
 	$(".terminal").click(function() {
 		$(".field").focus();  // Put input field in focus if anywhere in terminal is clicked
 	});
 
-	// Take action when ENTER key is pressed
-	$(document).keydown(function(key) {
-		if (parseInt(key.which, 10) === 13) {
-			var input = $.trim($(".field").val()).toLowerCase();
-			$(".terminalInput").remove();
-			makeLine("$ " + input);
-			
-			switch (input) {
-				case "whoami":
-					makeBio();
-					break;
-				case "ls":
-					listSkills();
-					break;
-				case "rget":
-					window.open("JacobKingeryResume.pdf");
-					break;
-				case "clear":
-					$(".terminalLine").remove();
-					break;
-				case "help":
-					makeHelp();
-					break;
-				case "reset":
-					$(".terminalLine").remove();
-					makeLine(initialText);
-					break;
-				default:
-					makeLine(undefText);
-					break;
-			}
+	// Take action when UP ARROW, DOWN ARROW, or ENTER key is pressed
+	$(document).keyup(function(key) {
+		var keyPressed = parseInt(key.which, 10);
 
-			while ($(".terminalLine").length > maxLines) {
-				$(".terminal").children("div:first").remove();  // Make sure terminal doesn't overflow
-			}
+		switch (keyPressed) {
+			case 38:  // UP ARROW, decrease historyCounter
+				historyCounter -= +(historyCounter > 0);
+				fillField();
+				break;
+			case 40:  // DOWN ARROW, increase historyCounter
+				historyCounter += +(historyCounter < commandHistory.length);
+				fillField();
+				break;
+			case 13:  // ENTER, process command
+				var input = $.trim($(".field").val()).toLowerCase();
+				commandHistory.push(input);
+				$(".terminalInput").remove();
+				makeLine("$ " + input);
+				
+				switch (input) {
+					case "whoami":
+						makeBio();
+						break;
+					case "ls":
+						listSkills();
+						break;
+					case "rget":
+						window.open("JacobKingeryResume.pdf");
+						break;
+					case "clear":
+						$(".terminalLine").remove();
+						break;
+					case "help":
+						makeHelp();
+						break;
+					case "reset":
+						$(".terminalLine").remove();
+						makeLine(initialText);
+						commandHistory = [""];
+						break;
+					default:
+						makeLine(undefText);
+						break;
+				}
 
-			makeInput();  // Make next input field
+				while ($(".terminalLine").length > maxLines) {
+					$(".terminal").children("div:first").remove();  // Make sure terminal doesn't overflow
+				}
+
+				makeInput();  // Make next input field
+				historyCounter = commandHistory.length;  // Reset historyCounter
+				break;
 		}
 	});
 });
