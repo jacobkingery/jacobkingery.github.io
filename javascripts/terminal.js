@@ -45,7 +45,9 @@ $(document).ready(function() {
 
 	var listSkills = function() {
 		// Print skills
-		var skills = ["Python", "JS", "jQuery", "Node.js", "Arduino C", "LaTeX", "MATLAB", "LTspice"];
+		var skills = ["Python", "Perl", "HTML", "CSS/LESS", "JS/jQuery", "Node.js",
+                      "SQL", "Arduino C", "Git", "LaTeX", "MATLAB", "LTspice",
+                      "DipTrace", "ModelSim", "Verilog"];
 		var skillText = "";
 		for (var i = 0; i < skills.length; i++) {
 			skillText += (skills[i] + "            ").slice(0, 12);
